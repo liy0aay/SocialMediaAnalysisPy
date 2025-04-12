@@ -66,5 +66,5 @@ for channel in channel_list:
 all_data['text'] = all_data['text'].apply(remove_emoji)
 
 #выводим 5 первых записей
-print(all_data.tail(5))
+print(all_data.head(5))
 all_data.to_csv("messages.csv", index=False, encoding='utf-8-sig')
