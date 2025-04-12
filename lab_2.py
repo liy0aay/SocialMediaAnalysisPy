@@ -1,3 +1,5 @@
+# Парсинг сообщений с Telegram-каналов о Франции, очистка от эмодзи для дальнейшего анализа
+
 from telethon import TelegramClient
 import pandas as pd
 from dotenv import load_dotenv
@@ -9,7 +11,7 @@ import re
 load_dotenv()
 API_ID = os.getenv("API_ID")
 API_HASH = os.getenv("API_HASH")
-channel_list = ['goproglib', 'golang_books']
+channel_list = ['marie_paris', 'notesdedenis', 'tanya_in_france', 'bonjourcroissant', 'french_irene']
 
 
 def remove_emoji(text):
@@ -64,5 +66,5 @@ for channel in channel_list:
 all_data['text'] = all_data['text'].apply(remove_emoji)
 
 #выводим 5 первых записей
-print(all_data.head(5))
+print(all_data.tail(5))
 all_data.to_csv("messages.csv", index=False, encoding='utf-8-sig')
